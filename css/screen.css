@@ -1,0 +1,26 @@
+.mejs-container {
+	display: none;
+}
+
+body {
+	background: #ecf0f1;
+}
+
+.social {
+	font-size: 30px;
+}
+
+header {
+	margin-top: 50px;
+}
+
+.mejs-offscreen {
+	display: none;
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+}
