@@ -1,0 +1,77 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" href="./css/flat-ui.min.css">
+		<link rel="stylesheet" href="https://raw.githubusercontent.com/johndyer/mediaelement/master/build/mediaelementplayer.css">
+		<link rel="stylesheet" href="./css/screen.css">
+		<title>Ari5 Radio</title>
+	</head>
+	<body>
+		<header>
+			<div class="container">
+				<nav class="navbar navbar-inverse navbar-embossed" role="navigation">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+							<span class="sr-only">Toggle navigation</span>
+						</button>
+						<a class="navbar-brand" href="#">Ari5 Radio</a>
+					</div>
+					<div class="collapse navbar-collapse" id="navbar-collapse-01">
+						<ul class="nav navbar-nav navbar-left">
+							<li>
+								<a id="play">
+									<span  class="fui-play"></span>
+									Play
+								</a>
+								<a id="pause" class="hidden">
+									<span class="fui-pause"></span>
+									Playing
+								</a>
+							</li>
+						</ul>
+					</div><!-- /.navbar-collapse -->
+				</nav>
+			</div>
+		</header>
+
+		<div class="col-md-12 social">
+			<div class="container">
+				<a href="https://www.facebook.com/aris.kroustouris/" class="fui-facebook" target="_blank"></a>
+				<a href="https://youtube.com" class="fui-youtube" target="_blank"></a>
+			</div>
+		</div>
+
+		<footer>
+			Created by <a href="https://github.com/kroustou/" class="fui-github" target="blank"></a>
+		</footer>
+		<audio src="http://213.239.218.99:7136/stream" type="audio/mpeg" preload="auto"/>
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="https://raw.githubusercontent.com/designmodo/Flat-UI/master/dist/js/flat-ui.min.js"></script>
+		<script src="https://raw.githubusercontent.com/johndyer/mediaelement/master/build/mediaelement-and-player.min.js"></script>
+		<script>
+			var player = new MediaElementPlayer('video,audio', {
+				features: [
+					'playpause',
+					'current',
+					'volume',
+					'fullscreen'
+				],
+			});
+			var play = $('#play');
+			var pause = $('#pause');
+
+			play.on('click', function () {
+				player.play();
+				$(this).addClass('hidden');
+				pause.removeClass('hidden')
+			});
+
+			pause.on('click', function () {
+				player.pause();
+				$(this).addClass('hidden');
+				play.removeClass('hidden')
+			});
+		</script>
+	</body>
+</html>
