@@ -32,12 +32,19 @@
 									Playing
 								</a>
 							</li>
+							<!-- <li>
+								<a id="now_playing">loading...</a>
+							</li> -->
 						</ul>
 					</div><!-- /.navbar-collapse -->
 				</nav>
 			</div>
 		</header>
 
+		<div class="container">
+			<h5>Now playing</h5>
+			<iframe src="http://213.239.218.99:7136/currentsong?sid=1" frameborder="0" height="50"></iframe>
+		</div>
 		<div class="col-md-12 social">
 			<div class="container">
 				<a href="https://www.facebook.com/aris.kroustouris/" class="fui-facebook" target="_blank"></a>
@@ -64,6 +71,11 @@
 			});
 			var play = $('#play');
 			var pause = $('#pause');
+
+			setInterval(function() {
+				$("iframe").prop('src', '');
+				$("iframe").prop('src', 'http://213.239.218.99:7136/currentsong?sid=1');
+			}, 5000);
 
 			play.on('click', function () {
 				player.play();
