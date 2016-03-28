@@ -1,56 +1,48 @@
 <html>
         <head>
-                <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                <meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-		<link rel="stylesheet" href="./css/flat-ui.min.css">
-		<link rel="stylesheet" href="https://rawgit.com/johndyer/mediaelement/master/build/mediaelementplayer.css">
-		<link rel="stylesheet" href="./css/screen.css">
-    <meta property="og:title" content="At home again by Aris" />
-    <meta property="og:site_name" content="Ari5 radio"/>
-    <meta property="og:title" content="At home again by Aris" />
-    <meta property="og:image" content="http://img09.deviantart.net/fea0/i/2015/176/3/7/radio_flat_art_by_liorkatz-d8yp0xw.jpg" />
-		<title>Ari5 Radio</title>
+	        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	        <meta name="viewport" content="width=device-width, initial-scale=1">
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+			<link rel="stylesheet" href="./css/flat-ui.min.css">
+			<link rel="stylesheet" href="https://rawgit.com/johndyer/mediaelement/master/build/mediaelementplayer.css">
+			<link rel="stylesheet" href="./css/screen.css">
+		    <meta property="og:title" content="@home again" />
+		    <meta property="og:site_name" content="@home again"/>
+		    <meta property="og:title" content="@home again" />
+		    <meta property="og:image" content="http://img09.deviantart.net/fea0/i/2015/176/3/7/radio_flat_art_by_liorkatz-d8yp0xw.jpg" />
+		<title>@home again</title>
 	</head>
 	<body>
 		<header>
 			<div class="container">
 				<nav class="navbar navbar-inverse navbar-embossed" role="navigation">
 					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
-							<span class="sr-only">Toggle navigation</span>
-						</button>
-						<a class="navbar-brand" href="#">Ari5 Radio</a>
+						<a class="navbar-brand" href="#">@home again</a>
 					</div>
-					<div class="collapse navbar-collapse" id="navbar-collapse-01">
-						<ul class="nav navbar-nav navbar-left">
-							<li>
-								<a id="play">
-									<span  class="fui-play"></span>
-									Play
-								</a>
-								<a id="pause" class="hidden">
-									<span class="fui-pause"></span>
-									Playing
-								</a>
-							</li>
-							<!-- <li>
-								<a id="now_playing">loading...</a>
-							</li> -->
-						</ul>
-					</div><!-- /.navbar-collapse -->
 				</nav>
 			</div>
 		</header>
-
 		<div class="container">
-			<h5>Now playing</h5>
+			<ul class="controls">
+				<li>
+					<a id="play">
+						<span  class="fui-play"></span>
+						Play
+					</a>
+					<a id="pause" class="hidden">
+						<span class="fui-pause"></span>
+						Playing
+					</a>
+				</li>
+				<!-- <li>
+					<a id="now_playing">loading...</a>
+				</li> -->
+			</ul>
 			<iframe src="http://213.239.218.99:7136/currentsong?sid=1" frameborder="0" width="100%" height="50"></iframe>
 		</div>
-		<div class="col-md-12 social">
-			<div class="container">
+		<div class="container">
+			<div class="social">
 				<a href="https://www.facebook.com/aris.kroustouris/" class="fui-facebook" target="_blank"></a>
-				<a href="https://youtube.com" class="fui-youtube" target="_blank"></a>
 			</div>
 		</div>
 
