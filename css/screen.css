@@ -67,7 +67,7 @@ body {
 }
 
 .social {
-	height: 10%;
+	height: 5%;
 	padding: 2.5%;
 }
 
@@ -80,5 +80,5 @@ footer {
 	bottom: 0;
 	width: 100%;
 	text-align: center;
-	height: 5%;
+	height: 10%;
 }
