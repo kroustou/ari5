@@ -8,7 +8,10 @@
 		<title>Ari5 Radio</title>
 		<meta property="og:title" content="@home again">
 		<meta property="og:site_name" content="@home again">
+		<meta property="og:description" content="">
 		<meta property="og:image" content="/images/fb.png">
+		<meta name="twitter:card" content="" />
+		<meta name="twitter:site" content="@home again" />
 	</head>
 	<body>
 		<div id="fb-root"></div>
@@ -23,7 +26,6 @@
 			<div class="title">
 				<h1>Ari5 Radio</h1>
 				<div class="now">
-					<iframe src="http://213.239.218.99:7136/currentsong?sid=1" frameborder="0" height="50" width="100%"></iframe>
 				</div>
 			</div>
 		</header>
@@ -60,9 +62,19 @@
 			var play = $('#play');
 			var pause = $('#pause');
 
+			function now_playing() {
+				$.getJSON('http://83.212.120.112:5050/now-playing/', function(data) {
+					if (data.success) {
+						$('.now').text(data.result);
+						$("meta[property='og\\:description']").attr("content", 'Now playing: ' + data.result);
+						$("meta[property='twitter\\:card']").attr("content", 'Now playing: ' + data.result);
+					}
+				});
+			}
+
+			now_playing();
 			setInterval(function() {
-				$(".now iframe").prop('src', '');
-				$(".now iframe").prop('src', 'http://213.239.218.99:7136/currentsong?sid=1');
+				now_playing();
 			}, 10000);
 
 			play.on('click', function () {
