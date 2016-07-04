@@ -3,7 +3,7 @@
 }
 
 header {
-	height: 70%;
+	height: 80%;
 	text-align: center;
 	background: #e74c3c;
  	position: relative;
@@ -34,7 +34,7 @@ a {
 
 .player {
 	background: #34495e;
-	height: 10%;
+	height: 5%;
  	position: relative;
 }
 
@@ -89,5 +89,5 @@ footer {
 	bottom: 0;
 	width: 100%;
 	text-align: center;
-	height: 10%;
+	height: 5%;
 }
