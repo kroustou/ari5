@@ -6,12 +6,25 @@
 		<link rel="stylesheet" href="./css/screen.css">
 		<link href='https://fonts.googleapis.com/css?family=Londrina+Outline' rel='stylesheet' type='text/css'>
 		<title>Ari5 Radio</title>
+		<meta property="og:title" content="@home again">
+		<meta property="og:site_name" content="@home again">
+		<meta property="og:image" content="/images/fb.png">
 	</head>
 	<body>
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
 		<header>
 			<div class="title">
 				<h1>Ari5 Radio</h1>
-				<div class="now"></div>
+				<div class="now">
+					<iframe src="http://213.239.218.99:7136/currentsong?sid=1" frameborder="0" height="50" width="100%"></iframe>
+				</div>
 			</div>
 		</header>
 		<div class="player">
@@ -24,11 +37,9 @@
 				</a>
 			</div>
 		</div>
-		<div class="col-md-12 social">
-			<div class="container">
-			</div>
+		<div class="social">
+			<div class="fb-share-button" data-href="http://kroustou.github.io/ari5" data-layout="button_count" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fkroustou.github.io%2Fari5&amp;src=sdkpreparse">Share</a></div>
 		</div>
-
 		<footer>
 			Created by <a href="https://github.com/kroustou/" class="fui-github" target="blank"></a>
 		</footer>
