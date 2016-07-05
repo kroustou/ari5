@@ -26,6 +26,10 @@
 			<div class="title">
 				<h1>Ari5 Radio</h1>
 				<div class="now">
+					<span class="playing"></span>
+					<div class="img">
+						<img src="" alt="">
+					</div>
 				</div>
 			</div>
 		</header>
@@ -65,7 +69,10 @@
 			function now_playing() {
 				$.getJSON('http://83.212.120.112:5050/now-playing/', function(data) {
 					if (data.success) {
-						$('.now').text(data.result);
+						$('.now .playing').text(data.result);
+						if (data.image) {
+							$('.now img').prop('src', data.image);
+						}
 						$("meta[property='og\\:description']").attr("content", 'Now playing: ' + data.result);
 						$("meta[property='twitter\\:card']").attr("content", 'Now playing: ' + data.result);
 					}
