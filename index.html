@@ -72,6 +72,10 @@
 						$('.now .playing').text(data.result);
 						if (data.image) {
 							$('.now img').prop('src', data.image);
+							$("meta[property='og\\:image']").attr("content", data.image);
+						} else {
+							$("meta[property='og\\:image']").attr("content", '/images/fb.png');
+							$('.now img').prop('src', '');
 						}
 						$("meta[property='og\\:description']").attr("content", 'Now playing: ' + data.result);
 						$("meta[property='twitter\\:card']").attr("content", 'Now playing: ' + data.result);
