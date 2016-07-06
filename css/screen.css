@@ -38,50 +38,27 @@ header {
 .controls {
 	z-index: 10;
 	background: #1abc9c;
-	padding: 1%;
+	padding-top: 1%;
+	padding-bottom: 1%;
 	display: inline-block;
 }
 
-.controls div {
-	float: left;
-	max-height: 50px;
-}
-
-.player .now-playing {
-	float: left;
-}
-.player .now-playing .now {
-	display: table;
-}
-
 .player .controls .buttons {
-	float: right;
-	display: table;
-	height: 50px;
-	width: 50px;
 	text-align: center;
 }
 
 .player .controls .buttons a {
-	display: table-cell;
-	vertical-align: middle;
-	text-align: center;
+
 }
 
-.player .now-playing .now .playing{
+.player .now-playing .now .playing {
 	vertical-align: middle;
 	display: table-cell;
 	text-align: center;
 }
 
-.player .now-playing .img {
-	height: 50px;
-	width: 50px;
-	margin-right: 10px;
-}
-
-.player .now-playing img {
-	height: 50px;
+.player .now-playing .img img {
+	width: 100%;
 }
 
 
@@ -118,4 +95,11 @@ body {
 footer {
 	width: 100%;
 	text-align: center;
+}
+
+
+.centerFlex {
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }

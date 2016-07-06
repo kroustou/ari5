@@ -27,23 +27,28 @@
 				<h1>at home again</h1>
 			</div>
 		</header>
-		<div class="player col-md-12">
-			<div class="controls col-md-offset-4 col-md-4">
-				<div class="now-playing col-xs-10">
-					<div class="now row">
-						<div class="img col-md-2 col-xs-4 row">
-							<img src="" alt="">
+		<div class="player container-fluid ">
+			<div class="controls row col-sm-offset-2 col-sm-8  col-md-offset-4 col-md-4">
+				<div class="centerFlex row ">
+					<div class="now-playing col-xs-10">
+						<div class="now centerFlex row">
+							<div class="img col-xs-4 col-sm-3">
+								<img src="" alt="">
+							</div>
+							<div class="col-xs-8 col-sm-9">
+								<div class="playing">
+								</div>
+							</div>
 						</div>
-						<span class="playing col-xs-8 col-md-10"></span>
 					</div>
-				</div>
-				<div class="buttons col-xs-2">
-					<a id="play">
-						<span  class="fui-play"></span>
-					</a>
-					<a id="pause" class="hidden">
-						<span class="fui-pause"></span>
-					</a>
+					<div class="buttons col-xs-2">
+						<a id="play">
+							<span  class="fui-play"></span>
+						</a>
+						<a id="pause" class="hidden">
+							<span class="fui-pause"></span>
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -79,7 +84,7 @@
 							$("meta[property='og\\:image']").attr("content", data.image);
 						} else {
 							$("meta[property='og\\:image']").attr("content", '/images/fb.png');
-							$('.now img').prop('src', '');
+							$('.now img').prop('src', 'http://placehold.it/150x150?text=no+image');
 						}
 						$("meta[property='og\\:description']").attr("content", 'Now playing: ' + data.result);
 						$("meta[property='twitter\\:card']").attr("content", 'Now playing: ' + data.result);
