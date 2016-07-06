@@ -5,23 +5,23 @@
 header {
 	height: 80%;
 	text-align: center;
-	background: #e74c3c;
  	position: relative;
+ 	background: url('http://www.nacw2013.com/wp-content/themes/nacw2013Live/images/buildings.png');
+ 	background-repeat: no-repeat;
+    background-position: bottom left;
+	background-color: #95a5a6;
 }
 
-a {
-	/*color: #2c3e50;*/
-}
 
 .title {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	color: #2c3e50;
+	color: #34495e;
 }
 
-.title .now {
+.now-playing .now {
 	font-weight: 800;
 	color: #ecf0f1;
 }
@@ -29,25 +29,59 @@ a {
 .title h1 {
 	font-size: 80px;
 	font-family: 'Londrina Outline', cursive;
-
 }
 
 .player {
 	background: #34495e;
-	height: 5%;
- 	position: relative;
 }
 
 .controls {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
 	z-index: 10;
-	width: 12vh;
-    height: 12vh;
 	background: #1abc9c;
-	border-radius: 50%;
+	padding: 1%;
+	display: inline-block;
+}
+
+.controls div {
+	float: left;
+	max-height: 50px;
+}
+
+.player .now-playing {
+	float: left;
+}
+.player .now-playing .now {
+	display: table;
+}
+
+.player .controls .buttons {
+	float: right;
+	display: table;
+	height: 50px;
+	width: 50px;
+	text-align: center;
+}
+
+.player .controls .buttons a {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.player .now-playing .now .playing{
+	vertical-align: middle;
+	display: table-cell;
+	text-align: center;
+}
+
+.player .now-playing .img {
+	height: 50px;
+	width: 50px;
+	margin-right: 10px;
+}
+
+.player .now-playing img {
+	height: 50px;
 }
 
 
@@ -56,13 +90,10 @@ a {
 }
 
 .controls a {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	font-size: 5vh;
-	transform: translate(-50%, -50%);
 	color: #34495e;
 	cursor: pointer;
+	display: inline-block;
+	font-size: 30px;
 }
 
 .controls:after {
@@ -77,8 +108,7 @@ body {
 }
 
 .social {
-	height: 9%;
-	padding: 0.5%;
+	padding: 1%;
 }
 
 .mejs-offscreen {
@@ -86,9 +116,6 @@ body {
 }
 
 footer {
-	position: fixed;
-	bottom: 0;
 	width: 100%;
 	text-align: center;
-	height: 5%;
 }

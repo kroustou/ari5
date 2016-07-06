@@ -22,28 +22,32 @@
 		  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6";
 		  fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));</script>
-		<header>
+		<header class="col-md-12">
 			<div class="title">
-				<h1>Ari5 Radio</h1>
-				<div class="now">
-					<span class="playing"></span>
-					<div class="img">
-						<img src="" alt="">
-					</div>
-				</div>
+				<h1>at home again</h1>
 			</div>
 		</header>
-		<div class="player">
-			<div class="controls">
-				<a id="play">
-					<span  class="fui-play"></span>
-				</a>
-				<a id="pause" class="hidden">
-					<span class="fui-pause"></span>
-				</a>
+		<div class="player col-md-12">
+			<div class="controls col-md-offset-4 col-md-4">
+				<div class="now-playing col-xs-10">
+					<div class="now row">
+						<div class="img col-md-2 col-xs-4 row">
+							<img src="" alt="">
+						</div>
+						<span class="playing col-xs-8 col-md-10"></span>
+					</div>
+				</div>
+				<div class="buttons col-xs-2">
+					<a id="play">
+						<span  class="fui-play"></span>
+					</a>
+					<a id="pause" class="hidden">
+						<span class="fui-pause"></span>
+					</a>
+				</div>
 			</div>
 		</div>
-		<div class="social">
+		<div class="social col-md-12">
 			<div class="fb-share-button" data-href="http://kroustou.github.io/ari5" data-layout="button_count" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fkroustou.github.io%2Fari5&amp;src=sdkpreparse">Share</a></div>
 		</div>
 		<footer>
