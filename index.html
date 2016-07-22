@@ -14,14 +14,6 @@
 		<meta name="twitter:site" content="@home again" />
 	</head>
 	<body>
-		<div id="fb-root"></div>
-		<script>(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6";
-		  fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
 		<header class="col-md-12">
 			<div class="title">
 				<h1>at home again</h1>
@@ -53,7 +45,7 @@
 			</div>
 		</div>
 		<div class="social col-md-12">
-			<div class="fb-share-button" data-href="http://kroustou.github.io/ari5" data-layout="button_count" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fkroustou.github.io%2Fari5&amp;src=sdkpreparse">Share</a></div>
+			<a href="#" class="fb-share"><span class="fui-facebook"></span> Share</a>
 		</div>
 		<footer>
 			Created by <a href="https://github.com/kroustou/" class="fui-github" target="blank"></a>
@@ -64,6 +56,20 @@
 		<script src="https://rawgit.com/designmodo/Flat-UI/master/dist/js/flat-ui.min.js"></script>
 		<script src="https://rawgit.com/johndyer/mediaelement/master/build/mediaelement-and-player.min.js"></script>
 		<script>
+			$('a.fb-share').click(function (ev) {
+				var image = $('.now .img img').prop('src');
+				if (image.indexOf('no+image')> -1) {
+					image = 'http://kroustou.github.io/ari5/images/fb.png';
+				}
+				var data = {
+					title: $('.now .playing').text(),
+					summary: 'Listening at home again'  ,
+					caption: 'By ari5',
+					image: image,
+				};
+    			var url = "https://facebook.com/sharer.php?u=" + encodeURIComponent(document.location)+'&title=' + data.title + '&description=' + data.summary + ', '+ data.caption + '&picture=' + data.image;
+				window.open(url, '_blank');
+			});
 			var player = new MediaElementPlayer('video,audio', {
 				features: [
 					'playpause',
