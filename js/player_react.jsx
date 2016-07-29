@@ -7,7 +7,7 @@ function now_playing(callback) {
     });
 }
 
-var now = {result: 'lala', image: null};
+var now;
 
 var played_songs = [];
 
