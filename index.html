@@ -19,33 +19,8 @@
 				<h1>at home again</h1>
 			</div>
 		</header>
-		<div class="player container-fluid ">
-			<div class="controls row col-sm-offset-2 col-sm-8  col-md-offset-3 col-md-6">
-				<div class="centerFlex row ">
-					<div class="now-playing col-xs-10">
-						<div class="now centerFlex row">
-							<div class="img col-xs-4 col-sm-3 col-md-2">
-								<img src="" alt="">
-							</div>
-							<div class="col-xs-8 col-sm-9 col-md-10">
-								<div class="playing">
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="buttons col-xs-2">
-						<a id="play">
-							<span  class="fui-play"></span>
-						</a>
-						<a id="pause" class="hidden">
-							<span class="fui-pause"></span>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="social col-md-12">
-			<a href="#" class="fb-share"><span class="fui-facebook"></span> Share</a>
+
+		<div id="main">
 		</div>
 		<footer>
 			Created by <a href="https://github.com/kroustou/" class="fui-github" target="blank"></a>
@@ -55,65 +30,11 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<script src="https://rawgit.com/designmodo/Flat-UI/master/dist/js/flat-ui.min.js"></script>
 		<script src="https://rawgit.com/johndyer/mediaelement/master/build/mediaelement-and-player.min.js"></script>
-		<script>
-			$('a.fb-share').click(function (ev) {
-				var image = $('.now .img img').prop('src');
-				if (image.indexOf('no+image')> -1) {
-					image = 'http://kroustou.github.io/ari5/images/fb.png';
-				}
-				var data = {
-					title: $('.now .playing').text(),
-					summary: 'Listening at home again'  ,
-					caption: 'By ari5',
-					image: image,
-				};
-    			var url = "https://facebook.com/sharer.php?u=" + encodeURIComponent(document.location)+'&title=' + data.title + '&description=' + data.summary + ', '+ data.caption + '&picture=' + data.image;
-				window.open(url, '_blank');
-			});
-			var player = new MediaElementPlayer('video,audio', {
-				features: [
-					'playpause',
-					'current',
-					'volume',
-					'fullscreen'
-				],
-			});
-			var play = $('#play');
-			var pause = $('#pause');
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react.min.js"></script>script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react-dom.min.js"></script>script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+		<script src="./js/now_playing.js"></script>
 
-			function now_playing() {
-				$.getJSON('http://83.212.120.112:5050/now-playing/', function(data) {
-					if (data.success) {
-						$('.now .playing').text(data.result);
-						if (data.image) {
-							$('.now img').prop('src', data.image);
-							$("meta[property='og\\:image']").attr("content", data.image);
-						} else {
-							$("meta[property='og\\:image']").attr("content", '/images/fb.png');
-							$('.now img').prop('src', 'http://placehold.it/150x150?text=no+image');
-						}
-						$("meta[property='og\\:description']").attr("content", 'Now playing: ' + data.result);
-						$("meta[property='twitter\\:card']").attr("content", 'Now playing: ' + data.result);
-					}
-				});
-			}
-
-			now_playing();
-			setInterval(function() {
-				now_playing();
-			}, 10000);
-
-			play.on('click', function () {
-				player.play();
-				$(this).addClass('hidden');
-				pause.removeClass('hidden')
-			});
-
-			pause.on('click', function () {
-				player.pause();
-				$(this).addClass('hidden');
-				play.removeClass('hidden')
-			});
-		</script>
+		<script type="text/babel" src="./js/player_react.jsx"></script>
 	</body>
 </html>
