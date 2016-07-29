@@ -103,3 +103,26 @@ footer {
   display: flex;
   justify-content: center;
 }
+
+.last-played {
+	overflow-y: hidden;
+	max-height: 0;
+	transition: all 1s;
+	font-size: 10px;
+}
+
+#player:hover .last-played {
+	max-height: 1000px;
+}
+
+.last-played {
+	opacity: 0.8;
+}
+
+.last-played .now.row {
+	margin: 5px auto;
+}
+
+.last-played img {
+	display: inline-block;
+}

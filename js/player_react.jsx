@@ -1,16 +1,23 @@
 function now_playing(callback) {
     $.getJSON('http://83.212.120.112:5050/now-playing/', function(data) {
         if (data.success) {
+            data.result = data.result.replace(/\+/gi, ' ');
             return callback(data);
         }
     });
 }
 
-var now = {
-}
+var now = {result: 'lala', image: null};
+
+var played_songs = [];
 
 now_playing(function(data) {
-    now = data;
+    if (data !== now) {
+        if (now) {
+            played_songs.unshift(now);
+        }
+        now = data;
+    }
 });
 setInterval(
     function () {
@@ -38,6 +45,34 @@ var Share = React.createClass({
     }
 });
 
+var History = React.createClass({
+     getInitialState: function() {
+        return {played: played_songs}
+    },
+    componentDidMount: function() {
+        var self = this;
+        setInterval(function() {
+            console.log(played_songs);
+            self.setState({played: played_songs});
+        }, 2000);
+    },
+    render: function () {
+        return (
+            <div className="last-played col-sm-offset-2 col-sm-8  col-md-offset-3 col-md-6 row">
+                <div className="row col-xs-10">
+                    {
+                        this.state.played.map(
+                            function(object, i){
+                                return <Player song={object}/>;
+                            }
+                        )
+                    }
+                </div>
+            </div>
+        )
+    }
+})
+
 var Player = React.createClass({
     defaultImage: 'http://placehold.it/150x150?text=no+image',
     render: function () {
@@ -58,20 +93,25 @@ var Player = React.createClass({
     }
 });
 
+
+
 var PlayerAndShare = React.createClass({
     defaultImage: 'http://placehold.it/150x150?text=no+image',
     getInitialState: function() {
         return {
-            image: this.defaultImage,
-            result: 'loading...'
+            now: {
+                image: this.defaultImage,
+                result: 'loading...'
+            }
         }
     },
     componentDidMount: function() {
         var self = this;
-        self.setState(now);
         setInterval(function() {
-            self.setState(now);
-        }, 5000);
+            if (now) {
+                self.setState({now: now});
+            }
+        }, 2000);
     },
     render: function() {
         return (
@@ -79,7 +119,7 @@ var PlayerAndShare = React.createClass({
                 <div className="player container-fluid " id="player">
                     <div className="controls row col-sm-offset-2 col-sm-8  col-md-offset-3 col-md-6">
                         <div className="centerFlex row ">
-                            <Player song={this.state}/>
+                            <Player song={this.state.now}/>
                             <div className="buttons col-xs-2">
                                 <a id="play">
                                     <span  className="fui-play"></span>
@@ -90,9 +130,10 @@ var PlayerAndShare = React.createClass({
                             </div>
                         </div>
                     </div>
+                    <History played={played_songs}/>
                 </div>
                 <div className="social col-md-12">
-                    <Share song={this.state}/>
+                    <Share song={this.state.now}/>
                 </div>
             </div>
         );
