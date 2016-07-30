@@ -8,25 +8,32 @@ function now_playing(callback) {
 }
 
 var now;
-
 var played_songs = [];
 
-now_playing(function(data) {
-    if (data !== now) {
-        if (now) {
+function setNow(data) {
+    if (!now  || (data.result != now.result)) {
+        console.log(data);
+        console.log(now);
+        if (typeof now != 'undefined') {
             played_songs.unshift(now);
         }
         now = data;
     }
+}
+
+now_playing(function(data) {
+    setNow(data);
 });
+
 setInterval(
     function () {
         now_playing(function(data) {
-            now = data;
+            setNow(data);
         });
     },
     10000
 );
+
 var Share = React.createClass({
     summary: 'Listening at home again'  ,
     caption: 'By ari5',
@@ -52,7 +59,6 @@ var History = React.createClass({
     componentDidMount: function() {
         var self = this;
         setInterval(function() {
-            console.log(played_songs);
             self.setState({played: played_songs});
         }, 2000);
     },
@@ -60,13 +66,17 @@ var History = React.createClass({
         return (
             <div className="last-played col-sm-offset-2 col-sm-8  col-md-offset-3 col-md-6 row">
                 <div className="row col-xs-10">
-                    {
-                        this.state.played.map(
-                            function(object, i){
-                                return <Player song={object}/>;
-                            }
-                        )
-                    }
+                { this.state.played.length ? <h6>Previously</h6>: '' }
+                    <div className="songs">{
+                            this.state.played.map(
+                                function(object, i){
+                                    if (object) {
+                                        return <Player song={object}/>;
+                                    }
+                                    return
+                                }
+                            )
+                        }</div>
                 </div>
             </div>
         )
