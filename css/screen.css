@@ -135,10 +135,28 @@ footer {
 	margin: 5px auto;
 }
 
-.last-played .now.row:hover {
+.last-played .centerFlex.row:hover {
 	background: #1abc9c;
 }
 
 .last-played img {
 	display: inline-block;
+}
+.last-played .youtube {
+	display: block;
+}
+
+.last-played .buttons {
+	display: none;
+}
+
+.youtube {
+	display: none;
+}
+.youtube a {
+	color: #e74c3c;
+}
+
+.youtube a:hover {
+	color: #c0392b;
 }

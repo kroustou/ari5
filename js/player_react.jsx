@@ -12,8 +12,6 @@ var played_songs = [];
 
 function setNow(data) {
     if (!now  || (data.result != now.result)) {
-        console.log(data);
-        console.log(now);
         if (typeof now != 'undefined') {
             played_songs.unshift(now);
         }
@@ -85,18 +83,32 @@ var History = React.createClass({
 
 var Player = React.createClass({
     defaultImage: 'http://placehold.it/150x150?text=no+image',
+    youtube: function () {
+        return "https://www.youtube.com/results?search_query=" + this.props.song.result
+    },
     render: function () {
         return (
-            <div className="now-playing col-xs-10">
-                <div className="now centerFlex row">
-                    <div className="img col-xs-4 col-sm-3 col-md-2">
-                        <img src={this.props.song.image ? this.props.song.image: this.defaultImage} alt=""/>
-                    </div>
-                    <div className="col-xs-8 col-sm-9 col-md-10">
-                        <div className="playing">
-                            {this.props.song.result}
+            <div className="centerFlex row ">
+                <div className="now-playing col-xs-10">
+                    <div className="now centerFlex row">
+                        <div className="img col-xs-4 col-sm-3 col-md-2">
+                            <img src={this.props.song.image ? this.props.song.image: this.defaultImage} alt=""/>
+                        </div>
+                        <div className="col-xs-8 col-sm-9 col-md-10">
+                                {this.props.song.result}
                         </div>
                     </div>
+                </div>
+                <div className="buttons col-xs-2">
+                    <a id="play">
+                        <span  className="fui-play"></span>
+                    </a>
+                    <a id="pause" className="hidden">
+                        <span className="fui-pause"></span>
+                    </a>
+                </div>
+                <div className="col-xs-2 youtube">
+                    <a className="fui-youtube col-sm-1" target="_blank" href={this.youtube()}></a>
                 </div>
             </div>
         )
@@ -128,17 +140,7 @@ var PlayerAndShare = React.createClass({
             <div className="main-wrapper">
                 <div className="player container-fluid " id="player">
                     <div className="controls row col-sm-offset-2 col-sm-8  col-md-offset-3 col-md-6">
-                        <div className="centerFlex row ">
-                            <Player song={this.state.now}/>
-                            <div className="buttons col-xs-2">
-                                <a id="play">
-                                    <span  className="fui-play"></span>
-                                </a>
-                                <a id="pause" className="hidden">
-                                    <span className="fui-pause"></span>
-                                </a>
-                            </div>
-                        </div>
+                        <Player song={this.state.now}/>
                     </div>
                     <History played={played_songs}/>
                 </div>
