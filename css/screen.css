@@ -110,7 +110,7 @@ footer {
 
 .last-played {
 	overflow-y: hidden;
-	/*max-height: 0;*/
+	max-height: 0;
 	transition: all 1s;
 	-webkit-transition-delay: 2s; /* Safari */
     transition-delay: .2s;
