@@ -23,6 +23,17 @@ now_playing(function(data) {
     setNow(data);
 });
 
+function getHistory() {
+    $.getJSON('http://83.212.120.112:5050/history/', function(data) {
+        if (data.success) {
+            for (var i=0;i < data.songs.length; i++) {
+                played_songs.push(data.songs[i]);
+            }
+        }
+    });
+}
+getHistory();
+
 setInterval(
     function () {
         now_playing(function(data) {
@@ -63,9 +74,9 @@ var History = React.createClass({
     render: function () {
         return (
             <div className="last-played col-sm-offset-2 col-sm-8  col-md-offset-3 col-md-6 row">
-                <div className="row col-xs-10">
+                <div className="row col-xs-12">
                 { this.state.played.length ? <h6>Previously</h6>: '' }
-                    <div className="songs">{
+                    <div className="songs col-xs-12 row">{
                             this.state.played.map(
                                 function(object, i){
                                     if (object) {
