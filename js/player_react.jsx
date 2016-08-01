@@ -7,6 +7,28 @@ function now_playing(callback) {
     });
 }
 
+function setBackground() {
+    var colors = [
+        '#2c3e50',
+        '#8e44ad',
+        '#9b59b6',
+        '#c0392b',
+        '#f39c12',
+        '#3498db',
+        '#16a085',
+        '#1abc9c',
+        '#f1c40f',
+        '#f39c12',
+        '#95a5a6',
+        '#7f8c8d',
+    ]
+    var now = Math.floor(new Date().getHours()/2);
+    // console.log(colors[now]);
+    $('header').css({'background-color': colors[now]});
+}
+
+setBackground();
+
 var now;
 var played_songs = [];
 
