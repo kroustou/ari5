@@ -157,7 +157,6 @@ var PlayerAndShare = React.createClass({
                 </div>
                 <div className="social col-md-12">
                     <Share song={this.state.now}/>
-                    <div class="fb-comments" data-href="https://kroustou.github.io/ari5" data-numposts="5"></div>
                 </div>
             </div>
         );
