@@ -114,6 +114,35 @@ var History = React.createClass({
     }
 })
 
+var Listeners = React.createClass({
+    getListeners: function () {
+        $.getJSON('http://83.212.120.112:5050/listeners/', function(data) {
+            if (data.listeners) {
+                return data;
+            }
+        });
+    },
+    getInitialState: function() {
+        return {listeners: '?'}
+    },
+    componentDidMount: function() {
+        var self = this;
+        self.setState(self.getListeners());
+        setInterval(function() {
+            self.setState(self.getListeners());
+        }, 15000);
+    },
+    render: function () {
+        return (
+            <div className="listeners centerFlex">
+                {this.state.listeners} <span className="fui-user"></span>
+            </div>
+        )
+    }
+});
+
+
+
 var Player = React.createClass({
     defaultImage: 'http://placehold.it/150x150?text=no+image',
     youtube: function () {
@@ -132,6 +161,7 @@ var Player = React.createClass({
                         </div>
                     </div>
                 </div>
+
                 <div className="buttons col-xs-2">
                     <a id="play">
                         <span  className="fui-play"></span>
@@ -171,6 +201,7 @@ var PlayerAndShare = React.createClass({
     render: function() {
         return (
             <div className="main-wrapper">
+                <Listeners></Listeners>
                 <div className="player container-fluid " id="player">
                     <div className="controls row col-sm-offset-2 col-sm-8  col-md-offset-3 col-md-6">
                         <Player song={this.state.now}/>
