@@ -1,0 +1,33 @@
+{
+  "name": "ari5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kroustou/ari5.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kroustou/ari5/issues"
+  },
+  "homepage": "https://github.com/kroustou/ari5#readme",
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "bootstrap-loader": "^2.0.0-beta.6",
+    "bootstrap-webpack": "0.0.5",
+    "mediaelement": "^2.22.0",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1"
+  }
+}
