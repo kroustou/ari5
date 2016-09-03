@@ -40,6 +40,9 @@ const playerReducer = (state=initialState, action) => {
     	return Object.assign({}, state, {playing: !state.playing})
     case 'UPDATE_NOW_PLAYING':
     	let newNow = nowPlaying(state.now)
+    	if (state.now !== newNow.now) {
+    		// append object to History
+    	}
     	return Object.assign({}, state, {now: newNow})
     default:
       return state

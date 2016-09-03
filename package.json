@@ -24,10 +24,12 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "bootstrap-loader": "^2.0.0-beta.6",
-    "bootstrap-webpack": "0.0.5",
+    "dns": "^0.2.2",
+    "fetch": "^1.1.0",
     "mediaelement": "^2.22.0",
+    "net": "^1.0.2",
     "react": "^15.3.1",
-    "react-dom": "^15.3.1"
+    "react-dom": "^15.3.1",
+    "whatwg-fetch": "^1.0.0"
   }
 }
