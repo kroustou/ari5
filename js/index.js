@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 
 	var _jquery = __webpack_require__(1);
 
@@ -95,6 +95,15 @@
 	    { store: store },
 	    _react2.default.createElement(App, null)
 	), document.getElementById('main'));
+
+	function setBackground() {
+	    var colors = ['#2c3e50', '#8e44ad', '#9b59b6', '#c0392b', '#f39c12', '#3498db', '#16a085', '#1abc9c', '#f1c40f', '#f39c12', '#95a5a6', '#7f8c8d'];
+	    var now = Math.floor(new Date().getHours() / 2);
+	    $('header').css({ 'background-color': colors[now] });
+	}
+
+	setBackground();
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
 /* 1 */
