@@ -40887,7 +40887,7 @@
 		};
 		return _react2.default.createElement(
 			'div',
-			{ className: 'col-sm-offset-2' },
+			{ className: 'col-xs-offset-2' },
 			_react2.default.createElement(
 				'a',
 				{ target: '_blank', href: 'https://facebook.com/sharer.php?u=' + encodeURIComponent(share.location) + '&title=' + now.title + '&description=' + share.summary + ', ' + share.caption + '&picture=' + now.image, className: 'fb-share' },

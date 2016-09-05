@@ -16,7 +16,7 @@ let Share = ({now}) => {
 	    location: document.location
 	}
 	return (
-		<div className="col-sm-offset-2">
+		<div className="col-xs-offset-2">
             <a target="_blank" href={'https://facebook.com/sharer.php?u=' + encodeURIComponent(share.location) + '&title=' + now.title + '&description=' + share.summary + ', ' + share.caption + '&picture=' + now.image} className="fb-share"><span className="fui-facebook"></span> Share</a>
         </div>
 	)
