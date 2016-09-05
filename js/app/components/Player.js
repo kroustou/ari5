@@ -1,14 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
+import * as actions from '../actions'
 
 let PlayerState = (state) => {
     return {
         now: state.playerReducer.now,
         playing: state.playerReducer.playing,
-        history: state.playerReducer.history
+        history: state.playerReducer.history,
     }
 }
+
+
 
 let PlayerDispatch = (dispatch) => {
     return {
@@ -20,6 +22,18 @@ let PlayerDispatch = (dispatch) => {
         initPlayer: () => {
             dispatch({
                 type: 'INIT_PLAYER'
+            })
+        },
+        setNowPlaying: (newPlaying) => {
+            dispatch({
+                type: 'SET_NOW_PLAYING',
+                new: newPlaying
+            })
+        },
+        addToHistory: (item) => {
+            dispatch({
+                type: 'ADD_TO_HISTORY',
+                item: item
             })
         }
     }
@@ -50,6 +64,31 @@ class Player extends React.Component {
 }
 
 class PlayerWrapper extends React.Component {
+    componentDidMount() {
+        this.props.initPlayer()
+        actions.FetchNowPlaying((newPlaying) => {
+            this.props.setNowPlaying(newPlaying)
+            actions.FetchHistory(response => {
+                if (response.success) {
+                    // reverse and add to history
+                    response.songs.reverse().map((song) => {
+                        let item = {title: song.result.replace(/\+/gi, ' ')}
+                        if (song.image) {
+                           item.image = song.image
+                        }
+                        this.props.addToHistory(item)
+                    })
+                }
+            })
+        })
+        setInterval(() => {
+                actions.FetchNowPlaying((newPlaying) => {
+                    this.props.setNowPlaying(newPlaying)
+                })
+            },
+            20000
+        )
+    }
     render () {
         return (
             <div className="player container-fluid " id="player">
@@ -67,15 +106,13 @@ class PlayerWrapper extends React.Component {
                 </div>
                 <div className="last-played col-sm-offset-2 col-sm-8  col-md-offset-3 col-md-6 row">
                     <div className="row col-xs-12">
-                        <h6>Previously</h6>
+                        { this.props.history.length ? <h6>Previously</h6>: '' }
                         <div className="songs col-xs-12 row">
-                            <Player now={this.props.now}/>
-                            <Player now={this.props.now}/>
-                            <Player now={this.props.now}/>
-                            <Player now={this.props.now}/>
-                            <Player now={this.props.now}/>
-                            <Player now={this.props.now}/>
-                            <Player now={this.props.now}/>
+                            {
+                                this.props.history.map((song)=> {
+                                    return <Player key={song.title} now={song}/>
+                                })
+                            }
                         </div>
                     </div>
                 </div>

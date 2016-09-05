@@ -2,10 +2,11 @@ import {combineReducers} from 'redux'
 import 'mediaelement/build/mediaelement-and-player'
 
 
-let initialNow = {
-	title: 'Loading...',
-    image: 'http://placehold.it/150x150?text=no+image'
+let defaultNow = {
+  title: 'Loading...',
+  image: 'http://placehold.it/150x150?text=no+image'
 }
+let initialNow = Object.assign({}, defaultNow, {initial: true})
 
 let initialState = {
     now: initialNow,
@@ -14,13 +15,18 @@ let initialState = {
     player: undefined
 }
 
-const nowPlaying = (prev) => {
-	return Object.assign({}, prev, {title: 'lalas'})
+const addToHistory = (history, song) => {
+  let newHist = history
+   if (song.initial) {
+      return newHist
+    }
+    newHist.unshift(Object.assign({}, defaultNow, song))
+    return newHist
 }
 
 const playerReducer = (state=initialState, action) => {
   switch (action.type) {
-  	case 'INIT_PLAYER':
+    case 'INIT_PLAYER':
 	  	let mediaPlayer = new MediaElementPlayer('audio', {
 		    features: [
 		        'playpause',
@@ -38,12 +44,18 @@ const playerReducer = (state=initialState, action) => {
     		state.player.play()
     	}
     	return Object.assign({}, state, {playing: !state.playing})
-    case 'UPDATE_NOW_PLAYING':
-    	let newNow = nowPlaying(state.now)
-    	if (state.now !== newNow.now) {
-    		// append object to History
-    	}
-    	return Object.assign({}, state, {now: newNow})
+    case 'SET_NOW_PLAYING':
+      if (state.now.title !== action.new.title) {
+        let newObj = Object.assign({}, defaultNow, action.new)
+        let newHist = addToHistory(state.history, state.now)
+        return Object.assign({}, state, {now: newObj, history: newHist})
+      }
+      return state
+    case 'ADD_TO_HISTORY':
+      // we have to add image in case it does not exist
+      let newObj = Object.assign({}, defaultNow, action.item)
+      let newHist = addToHistory(state.history.slice(), action.item)
+      return Object.assign({}, state, {history: newHist})
     default:
       return state
   }

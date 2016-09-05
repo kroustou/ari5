@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 import player from './reducers'
 import PlayerWrapper from './components/Player'
 import Share from './components/Share'
+import {fetchNowPlaying} from './actions'
 
 
 const App = (a) => (
@@ -27,13 +28,3 @@ ReactDOM.render(
     document.getElementById('main')
 )
 
-// and then initialize the player
-store.dispatch({type: 'INIT_PLAYER'})
-
-
-store.dispatch({type: 'UPDATE_NOW_PLAYING'})
-setTimeout(() => {
-        store.dispatch({type: 'UPDATE_NOW_PLAYING'})
-    },
-    10000
-)

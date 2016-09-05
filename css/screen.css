@@ -27,7 +27,7 @@ header {
 }
 
 .title h1 {
-	font-size: 80px;
+	font-size: 10vh;
 	font-family: 'Londrina Outline', cursive;
 }
 
@@ -179,4 +179,16 @@ footer {
 
 .listeners:hover {
 	opacity: 1;
+}
+
+
+.fb-comments {
+	max-width: 550px;
+	margin: 0 auto;
+	display: block !important;
+	width: 100%;
+}
+
+.fb-comments iframe {
+	width: 100% !important;
 }
