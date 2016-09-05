@@ -110,7 +110,7 @@ class PlayerWrapper extends React.Component {
                         <div className="songs col-xs-12 row">
                             {
                                 this.props.history.map((song)=> {
-                                    return <Player key={song.title} now={song}/>
+                                    return <Player key={this.props.history.indexOf(song)} now={song}/>
                                 })
                             }
                         </div>
