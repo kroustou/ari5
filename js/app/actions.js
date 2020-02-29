@@ -1,22 +1,22 @@
-import * as settings from './settings'
 
 export const FetchNowPlaying = (callback) => {
-    return fetch(settings.server + '/now-playing/').then(response => {
+    return fetch('http://165.22.88.231/api/nowplaying/1').then(response => {
         return response.json().then(json => {
-            let newNow = {'title': json.result.replace(/\+/gi, ' ')}
-            if (json.image) {
-                newNow.image = json.image
+            let history = []
+            json.song_history.map(item => history.push({
+                title: item.song.text,
+                image: item.song.art
+
+            }))
+            let response = {
+                now: {
+                    title: json.now_playing.song.text,
+                    image: json.now_playing.song.art
+                },
+                history
             }
-            callback(newNow)
-        })
-    })
-}
 
-
-export const FetchHistory = callback => {
-    return fetch(settings.server + '/history/').then(response => {
-        return response.json().then(json => {
-            callback(json)
+            callback(response)
         })
     })
 }

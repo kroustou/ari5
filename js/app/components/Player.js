@@ -66,19 +66,11 @@ class Player extends React.Component {
 class PlayerWrapper extends React.Component {
     componentDidMount() {
         this.props.initPlayer()
-        actions.FetchNowPlaying((newPlaying) => {
-            this.props.setNowPlaying(newPlaying)
-            actions.FetchHistory(response => {
-                if (response.success) {
-                    // reverse and add to history
-                    response.songs.reverse().map((song) => {
-                        let item = {title: song.result.replace(/\+/gi, ' ')}
-                        if (song.image) {
-                           item.image = song.image
-                        }
-                        this.props.addToHistory(item)
-                    })
-                }
+        actions.FetchNowPlaying(response => {
+            this.props.setNowPlaying(response.now)
+            // reverse and add to history
+            response.history.map(song => {
+                this.props.addToHistory(song)
             })
         })
         setInterval(() => {

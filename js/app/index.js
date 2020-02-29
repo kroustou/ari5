@@ -13,7 +13,7 @@ import {fetchNowPlaying} from './actions'
 
 const App = (a) => (
     <div>
-        <PlayerWrapper stream='http://213.239.218.99:7136/stream' type="audio/mpeg" preload="auto"/>
+        <PlayerWrapper stream='http://165.22.88.231:8000/radio.mp3?1582994672' type="audio/mpeg" preload="auto"/>
         <Share/>
     </div>
 )
